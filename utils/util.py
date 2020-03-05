@@ -48,3 +48,10 @@ def convert_response_to_operation_results(response, M):
             res = extract_ij_from_k(k, M)
             operation_results[res[0]] = res[1]
     return operation_results
+
+def fill_Q_with_indexes(Q, i, t, k, t_prime, M, value):
+    index_a = convert_indexes(i, t, M)
+    index_b = convert_indexes(k, t_prime, M)
+    if index_a > index_b:
+        index_a, index_b = index_b, index_a
+    Q[index_a][index_b] += value

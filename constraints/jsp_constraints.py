@@ -11,7 +11,8 @@ def add_h1_constraint(Q, jobs_data, M, eta):
             for t in range(M):
                 for t_prime in range(M):
                     if (t + get_operation_x(i, jobs_data)[1]) > t_prime:
-                        Q[convert_indexes(i, t, M)][convert_indexes(i + 1, t_prime, M)] += eta
+                        fill_Q_with_indexes(Q, i, t, i+1, t_prime, M, eta)
+                        #Q[convert_indexes(i, t, M)][convert_indexes(i + 1, t_prime, M)] += eta
 
 
 #
@@ -33,7 +34,8 @@ def add_h2_constraint(Q, jobs_data, M, alpha):
                     for t_prime in range(M):
                         if Am_condition_fulfilled(i, t, k, t_prime, M, jobs_data) \
                                 or Bm_condition_fulfilled(i, t, k, t_prime, M, jobs_data):
-                            Q[convert_indexes(i, t, M)][convert_indexes(k, t_prime, M)] += alpha
+                            fill_Q_with_indexes(Q, i, t, k, t_prime, M, alpha)
+                            #Q[convert_indexes(i, t, M)][convert_indexes(k, t_prime, M)] += alpha
 
 
 #
@@ -45,6 +47,8 @@ def add_h3_constraint(Q, jobs_data, M, beta):
     for i in range(N):
         for u in range(M):
             for t in range(u):
-                Q[convert_indexes(i, t, M)][convert_indexes(i, u, M)] += beta * 2
+                fill_Q_with_indexes(Q, i, t, i, u, M, beta*2)
+                #Q[convert_indexes(i, t, M)][convert_indexes(i, u, M)] += beta * 2
         for t in range(M):
-            Q[convert_indexes(i, t, M)][convert_indexes(i, t, M)] -= beta
+            fill_Q_with_indexes(Q, i, t, i, t, M, -beta)
+            #Q[convert_indexes(i, t, M)][convert_indexes(i, t, M)] -= beta

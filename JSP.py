@@ -87,14 +87,14 @@ def run(args=None):
         # Check for h3
         if not constaint_utils.h3_constraint_is_fulfilled(operation_results, jobs_data):
             if options.a:
-                params["beta"] += 1
-                nbr_of_constraint_success = 0
                 if options.v:
                     automatization_utils.print_failure("h3", params["eta"], params["alpha"],
-                                                       params["beta"] - 1, nbr_of_constraint_success)
+                                                       params["beta"], nbr_of_constraint_success)
                     print("Increasing beta")
                     print("Trying again with values: ")
                     print(params)
+                params["beta"] += 1
+                nbr_of_constraint_success = 0
                 continue
             else:
                 automatization_utils.print_failure("h3", params["eta"], params["alpha"],
@@ -104,14 +104,14 @@ def run(args=None):
         # Check for h1
         if not constaint_utils.h1_constraint_is_fulfilled(operation_results, jobs_data):
             if options.a:
-                params["eta"] += 1
-                nbr_of_constraint_success = 0
                 if options.v:
-                    automatization_utils.print_failure("h1", params["eta"] - 1, params["alpha"],
+                    automatization_utils.print_failure("h1", params["eta"], params["alpha"],
                                                        params["beta"], nbr_of_constraint_success)
                     print("Increasing eta")
                     print("Trying again with values: ")
                     print(params)
+                params["eta"] += 1
+                nbr_of_constraint_success = 0
                 continue
             else:
                 automatization_utils.print_failure("h1", params["eta"], params["alpha"],
@@ -121,14 +121,14 @@ def run(args=None):
         # Check for h2
         if not constaint_utils.h2_constraint_is_fulfilled(operation_results, jobs_data, M):
             if options.a:
-                params["alpha"] += 1
-                nbr_of_constraint_success = 0
                 if options.v:
-                    automatization_utils.print_failure("h2", params["eta"], params["alpha"] - 1,
+                    automatization_utils.print_failure("h2", params["eta"], params["alpha"],
                                                        params["beta"], nbr_of_constraint_success)
                     print("Increasing alpha")
                     print("Trying again with values: ")
                     print(params)
+                params["alpha"] += 1
+                nbr_of_constraint_success = 0
                 continue
             else:
                 automatization_utils.print_failure("h2", params["eta"], params["alpha"],

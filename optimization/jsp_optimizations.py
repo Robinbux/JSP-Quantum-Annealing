@@ -16,8 +16,9 @@ def minimize_spaces_on_machine_level(Q, jobs_data, M, gamma):
                         if (k == i):
                             continue
                         penalty = abs(t_prime - (t + get_operation_x(operation_indexes_m[i], jobs_data)[1]))
-                        Q[convert_indexes(operation_indexes_m[i], t, M)][
-                            convert_indexes(operation_indexes_m[k], t_prime, M)] += gamma * penalty
+                        fill_Q_with_indexes(Q, operation_indexes_m[i], t, operation_indexes_m[k], t_prime, M, gamma * penalty)
+                        #Q[convert_indexes(operation_indexes_m[i], t, M)][
+                        #    convert_indexes(operation_indexes_m[k], t_prime, M)] += gamma * penalty
 
 
 #
@@ -30,4 +31,5 @@ def minimize_spaces_on_job_level(Q, jobs_data, M, delta):
             for t in range(M):
                 for t_prime in range(M):
                     penalty = abs(t_prime - (t + get_operation_x(i, jobs_data)[1]))
-                    Q[convert_indexes(i, t, M)][convert_indexes(i + 1, t_prime, M)] += delta * penalty
+                    fill_Q_with_indexes(Q, i, t, i+1, t_prime, M, delta * penalty)
+                    #Q[convert_indexes(i, t, M)][convert_indexes(i + 1, t_prime, M)] += delta * penalty
