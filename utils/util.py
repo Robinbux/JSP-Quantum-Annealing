@@ -31,7 +31,7 @@ def get_operation_indexes_for_machine_m(m, jobs):
     for j in range(len(jobs)):
         for o in range(len(jobs[0])):
             if jobs[j][o][0] == m:
-                indexes.append(j * len(jobs) + o)
+                indexes.append(j * len(jobs[j]) + o)
     return indexes
 
 

@@ -9,6 +9,7 @@ from constraints import jsp_constraints as jsp_cst
 from utils import dwave_sampler, constaint_utils, automatization_utils
 from utils.scheduling_plot import plot_operations, plot_matrix
 from utils.util import *
+import dwave.inspector
 
 
 def run(args=None):
@@ -25,6 +26,7 @@ def run(args=None):
                         action='store_true')
     parser.add_argument('-s', "--simulated", dest='s', help="Use the simulated annealer", action='store_true')
     parser.add_argument('-q', "--quantum", dest='q', help="Use the D-Wave quantum computer", action='store_true')
+    parser.add_argument('-i', "--inspect", dest='i', help="Use the D-Wave inspector", action='store_true')
 
     options, unknown = parser.parse_known_args(args=args) if args is not None else parser.parse_known_args()
 
@@ -45,15 +47,14 @@ def run(args=None):
     # Jobs
     jobs_data = [  # task = (machine_id, processing_time).
         [(0, 3), (1, 2), (2, 1)],  # Job0
-        [(2, 2), (0, 1), (1, 2)],  # Job1
-        [(1, 1), (0, 1), (2, 2)]  # Job2
+        [(2, 2), (0, 1), (1, 2)]   # Job1
     ]
 
     # Other constants
     nbr_jobs = len(jobs_data)
     nbr_machines = get_number_of_machines(jobs_data)
     N = nbr_jobs * len(jobs_data[0])  # Num Operations -- Rows
-    M = 9  # Upper Time Limit -- Cols
+    M = 7  # Upper Time Limit -- Cols
 
     operation_results = {}
     nbr_of_constraint_success = 0
@@ -142,6 +143,9 @@ def run(args=None):
         nbr_of_constraint_success += 1
 
     print(operation_results)
+
+    if options.i:
+        dwave.inspector.show(response)
 
     if options.a:
         automatization_utils.print_success(params["eta"], params["alpha"], params["beta"], params["gamma"],

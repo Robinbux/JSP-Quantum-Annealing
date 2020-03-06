@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28968289-5cc1-451e-b261-6968f26faa77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSP.py" beforeDir="false" afterPath="$PROJECT_DIR$/JSP.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constraints/jsp_constraints.py" beforeDir="false" afterPath="$PROJECT_DIR$/constraints/jsp_constraints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsp_notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jsp_notebook.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimization/jsp_optimizations.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/jsp_optimizations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parameters.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/parameters.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/dwave_sampler.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/dwave_sampler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +65,7 @@
       <recent name="$PROJECT_DIR$/utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Find Values">
+  <component name="RunManager" selected="Python.Plain">
     <configuration name="Find Values" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="jsp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -185,7 +181,7 @@
       <workItem from="1583234934554" duration="10598000" />
       <workItem from="1583267061763" duration="29000" />
       <workItem from="1583267104980" duration="34186000" />
-      <workItem from="1583447073440" duration="283000" />
+      <workItem from="1583447073440" duration="3311000" />
     </task>
     <servers />
   </component>
@@ -205,62 +201,62 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877@0.23.1440.877" timestamp="1583242060884" />
-    <state x="723" y="262" key="#xdebugger.evaluate" timestamp="1583436838577">
+    <state x="723" y="262" key="#xdebugger.evaluate" timestamp="1583453002771">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="723" y="262" key="#xdebugger.evaluate/0.23.1920.1057@0.23.1920.1057" timestamp="1583436838577" />
-    <state width="1637" height="187" key="GridCell.Tab.0.bottom" timestamp="1583447359778">
-      <screen x="-241" y="-1057" width="1920" height="1057" />
+    <state x="723" y="262" key="#xdebugger.evaluate/0.23.1920.1057@0.23.1920.1057" timestamp="1583453002771" />
+    <state width="1639" height="377" key="GridCell.Tab.0.bottom" timestamp="1583453529285">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1637" height="187" key="GridCell.Tab.0.bottom/0.23.1440.877/-241.-1057.1920.1057@-241.-1057.1920.1057" timestamp="1583447359778" />
+    <state width="1637" height="184" key="GridCell.Tab.0.bottom/0.23.1440.877/-241.-1057.1920.1057@-241.-1057.1920.1057" timestamp="1583451630923" />
     <state width="939" height="470" key="GridCell.Tab.0.bottom/0.23.1440.877/-241.-1057.1920.1057@0.23.1440.877" timestamp="1583443218655" />
     <state width="1398" height="313" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1583405946119" />
-    <state width="1878" height="391" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1583437148089" />
-    <state width="1637" height="187" key="GridCell.Tab.0.center" timestamp="1583447359773">
-      <screen x="-241" y="-1057" width="1920" height="1057" />
+    <state width="1639" height="377" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1583453529285" />
+    <state width="1639" height="377" key="GridCell.Tab.0.center" timestamp="1583453529283">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1637" height="187" key="GridCell.Tab.0.center/0.23.1440.877/-241.-1057.1920.1057@-241.-1057.1920.1057" timestamp="1583447359773" />
+    <state width="1637" height="184" key="GridCell.Tab.0.center/0.23.1440.877/-241.-1057.1920.1057@-241.-1057.1920.1057" timestamp="1583451630922" />
     <state width="939" height="470" key="GridCell.Tab.0.center/0.23.1440.877/-241.-1057.1920.1057@0.23.1440.877" timestamp="1583443218654" />
     <state width="1398" height="313" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1583405946118" />
-    <state width="1878" height="391" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1583437148087" />
-    <state width="1637" height="187" key="GridCell.Tab.0.left" timestamp="1583447359771">
-      <screen x="-241" y="-1057" width="1920" height="1057" />
+    <state width="1639" height="377" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1583453529283" />
+    <state width="1639" height="377" key="GridCell.Tab.0.left" timestamp="1583453529282">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1637" height="187" key="GridCell.Tab.0.left/0.23.1440.877/-241.-1057.1920.1057@-241.-1057.1920.1057" timestamp="1583447359771" />
+    <state width="1637" height="184" key="GridCell.Tab.0.left/0.23.1440.877/-241.-1057.1920.1057@-241.-1057.1920.1057" timestamp="1583451630922" />
     <state width="939" height="470" key="GridCell.Tab.0.left/0.23.1440.877/-241.-1057.1920.1057@0.23.1440.877" timestamp="1583443218654" />
     <state width="1398" height="313" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1583405946117" />
-    <state width="1878" height="391" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1583437148087" />
-    <state width="1637" height="187" key="GridCell.Tab.0.right" timestamp="1583447359775">
-      <screen x="-241" y="-1057" width="1920" height="1057" />
+    <state width="1639" height="377" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1583453529282" />
+    <state width="1639" height="377" key="GridCell.Tab.0.right" timestamp="1583453529284">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1637" height="187" key="GridCell.Tab.0.right/0.23.1440.877/-241.-1057.1920.1057@-241.-1057.1920.1057" timestamp="1583447359775" />
+    <state width="1637" height="184" key="GridCell.Tab.0.right/0.23.1440.877/-241.-1057.1920.1057@-241.-1057.1920.1057" timestamp="1583451630922" />
     <state width="939" height="470" key="GridCell.Tab.0.right/0.23.1440.877/-241.-1057.1920.1057@0.23.1440.877" timestamp="1583443218655" />
     <state width="1398" height="313" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1583405946118" />
-    <state width="1878" height="391" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1583437148088" />
-    <state width="939" height="470" key="GridCell.Tab.1.bottom" timestamp="1583443218657">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1639" height="377" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1583453529284" />
+    <state width="1639" height="377" key="GridCell.Tab.1.bottom" timestamp="1583453536638">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="939" height="470" key="GridCell.Tab.1.bottom/0.23.1440.877/-241.-1057.1920.1057@0.23.1440.877" timestamp="1583443218657" />
     <state width="1398" height="140" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1583405039060" />
-    <state width="939" height="470" key="GridCell.Tab.1.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1583436860484" />
-    <state width="939" height="470" key="GridCell.Tab.1.center" timestamp="1583443218657">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1639" height="377" key="GridCell.Tab.1.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1583453536638" />
+    <state width="1639" height="377" key="GridCell.Tab.1.center" timestamp="1583453536637">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="939" height="470" key="GridCell.Tab.1.center/0.23.1440.877/-241.-1057.1920.1057@0.23.1440.877" timestamp="1583443218657" />
     <state width="1398" height="140" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1583405039060" />
-    <state width="939" height="470" key="GridCell.Tab.1.center/0.23.1920.1057@0.23.1920.1057" timestamp="1583436860483" />
-    <state width="939" height="470" key="GridCell.Tab.1.left" timestamp="1583443218656">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1639" height="377" key="GridCell.Tab.1.center/0.23.1920.1057@0.23.1920.1057" timestamp="1583453536637" />
+    <state width="1639" height="377" key="GridCell.Tab.1.left" timestamp="1583453536637">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="939" height="470" key="GridCell.Tab.1.left/0.23.1440.877/-241.-1057.1920.1057@0.23.1440.877" timestamp="1583443218656" />
     <state width="1398" height="140" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1583405039059" />
-    <state width="939" height="470" key="GridCell.Tab.1.left/0.23.1920.1057@0.23.1920.1057" timestamp="1583436860483" />
-    <state width="939" height="470" key="GridCell.Tab.1.right" timestamp="1583443218657">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1639" height="377" key="GridCell.Tab.1.left/0.23.1920.1057@0.23.1920.1057" timestamp="1583453536637" />
+    <state width="1639" height="377" key="GridCell.Tab.1.right" timestamp="1583453536637">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="939" height="470" key="GridCell.Tab.1.right/0.23.1440.877/-241.-1057.1920.1057@0.23.1440.877" timestamp="1583443218657" />
     <state width="1398" height="140" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1583405039060" />
-    <state width="939" height="470" key="GridCell.Tab.1.right/0.23.1920.1057@0.23.1920.1057" timestamp="1583436860483" />
+    <state width="1639" height="377" key="GridCell.Tab.1.right/0.23.1920.1057@0.23.1920.1057" timestamp="1583453536637" />
     <state x="0" y="23" width="1440" height="877" key="SettingsEditor" timestamp="1583405911308">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -286,14 +282,29 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <condition expression="params[&quot;alpha&quot;] == 130" language="Python" />
           <url>file://$PROJECT_DIR$/JSP.py</url>
-          <line>121</line>
+          <line>122</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/constaint_utils.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/JSP.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/util.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/jsp$Plain.coverage" NAME="Plain Coverage Results" MODIFIED="1583405241841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/jsp$Plain.coverage" NAME="Plain Coverage Results" MODIFIED="1583453529146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/jsp$JSP.coverage" NAME="Find Values Coverage Results" MODIFIED="1583234703045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/jsp$Plain___Matrix.coverage" NAME="Plain - Matrix Coverage Results" MODIFIED="1583346427167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/jsp$Find_Values.coverage" NAME="Find Values Coverage Results" MODIFIED="1583436860457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
