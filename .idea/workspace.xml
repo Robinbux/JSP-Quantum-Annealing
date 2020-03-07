@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28968289-5cc1-451e-b261-6968f26faa77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/parameters.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/arg_parser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/param_util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JSP.py" beforeDir="false" afterPath="$PROJECT_DIR$/JSP.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsp_notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jsp_notebook.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimization/jsp_optimizations.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/jsp_optimizations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parameters.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/parameters.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/dwave_sampler.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/dwave_sampler.py" afterDir="false" />
     </list>
@@ -187,7 +182,8 @@
       <workItem from="1583267104980" duration="34186000" />
       <workItem from="1583447073440" duration="5343000" />
       <workItem from="1583546535506" duration="1793000" />
-      <workItem from="1583611506722" duration="3893000" />
+      <workItem from="1583611506722" duration="4165000" />
+      <workItem from="1583623994974" duration="523000" />
     </task>
     <servers />
   </component>

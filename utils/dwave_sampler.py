@@ -7,7 +7,7 @@ from dwave.system.samplers import DWaveSampler
 from dwave.system.composites import EmbeddingComposite
 
 numr = 1000  # Number of samples / quantum computations
-chstr = 70  # Implementation parameter on the DWave QPU
+chstr = 2  # Implementation parameter on the DWave QPU
 
 
 def sample_on_dwave(Q, Quantum=False):
@@ -15,7 +15,7 @@ def sample_on_dwave(Q, Quantum=False):
 
     if Quantum:
         # Real
-        sampler = EmbeddingComposite(DWaveSampler())
+        sampler = EmbeddingComposite(DWaveSampler(solver={'qpu':True}))
         #sampler = DWaveSampler()
         return sampler.sample(bqm, chain_strength=chstr, num_reads=numr)
 
