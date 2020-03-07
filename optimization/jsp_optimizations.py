@@ -33,3 +33,14 @@ def minimize_spaces_on_job_level(Q, jobs_data, M, delta):
                     penalty = abs(t_prime - (t + get_operation_x(i, jobs_data)[1]))
                     fill_Q_with_indexes(Q, i, t, i+1, t_prime, M, delta * penalty)
                     #Q[convert_indexes(i, t, M)][convert_indexes(i + 1, t_prime, M)] += delta * penalty
+
+
+#
+# General time optimization
+#
+def optimize_time(Q, jobs_data, M, epsilon):
+    nbr_jobs = len(jobs_data)
+    N = nbr_jobs * len(jobs_data[0])
+    for i in range(N):
+        for t in range(M):
+            fill_Q_with_indexes(Q, i, t, i, t, M, epsilon * t)

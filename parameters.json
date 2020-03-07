@@ -1,0 +1,17 @@
+{
+  "paramets": {
+    "eta": 21,
+    "alpha": 16,
+    "beta": 35,
+    "gamma": 1,
+    "delta": 1
+
+  }
+}
+
+params:
+  - eta: 21
+  - alpha: 16
+  - beta: 35
+  - gamma: 1
+  - delta: 1

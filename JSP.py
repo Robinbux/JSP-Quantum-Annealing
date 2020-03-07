@@ -1,7 +1,5 @@
 import numpy as np
-import pandas as pd
 import yaml
-import argparse
 import sys
 
 from optimization import jsp_optimizations as jsp_op
@@ -9,40 +7,14 @@ from constraints import jsp_constraints as jsp_cst
 from utils import dwave_sampler, constaint_utils, automatization_utils
 from utils.scheduling_plot import plot_operations, plot_matrix
 from utils.util import *
+from utils.arg_parser import parse_arguments
+from utils.param_util import load_params
 import dwave.inspector
 
 
-def run(args=None):
-    # Flags
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-a', "--automatically", dest='a',
-                        help="Automatically increase 'Eta', 'Alpha' and 'Beta', until no constraint is violated anymore.",
-                        action='store_true')
-    parser.add_argument('-r', "--replace", dest='r',
-                        help="Replace old values in the yaml file, with the automatically chosen ones.",
-                        action='store_true')
-    parser.add_argument('-v', "--verbose", dest='v', help="More verbose output.", action='store_true')
-    parser.add_argument('-m', "--matrix", dest='m', help="Show an interactive confusion matrix of the final Q.",
-                        action='store_true')
-    parser.add_argument('-s', "--simulated", dest='s', help="Use the simulated annealer", action='store_true')
-    parser.add_argument('-q', "--quantum", dest='q', help="Use the D-Wave quantum computer", action='store_true')
-    parser.add_argument('-i', "--inspect", dest='i', help="Use the D-Wave inspector", action='store_true')
-
-    options, unknown = parser.parse_known_args(args=args) if args is not None else parser.parse_known_args()
-
-
-    with open("parameters.yaml", 'r') as stream:
-        try:
-            params = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
-
-    # Lambdas
-    # eta = params["eta"]  # h1
-    # alpha = params["alpha"]  # h2
-    # beta = params["beta"]  # h3
-    # gamma = params["gamma"]  # Minimization -- Machine level
-    # delta = params["delta"]  # Minimization -- Job level
+def main(args=None):
+    options, unknown = parse_arguments(args)
+    params = load_params()
 
     # Jobs
     jobs_data = [  # task = (machine_id, processing_time).
@@ -60,7 +32,7 @@ def run(args=None):
     nbr_of_constraint_success = 0
     stop = False
 
-    while nbr_of_constraint_success < 40 and not stop:
+    while nbr_of_constraint_success < 10 and not stop:
         # Initialize Matrix
         Q = np.zeros((M * N, M * N))
 
@@ -68,6 +40,8 @@ def run(args=None):
         jsp_op.minimize_spaces_on_machine_level(Q, jobs_data, M, params["gamma"])
         # Space Minimization -- Job level
         jsp_op.minimize_spaces_on_job_level(Q, jobs_data, M, params["delta"])
+        # Time Optimization
+        jsp_op.optimize_time(Q, jobs_data, M, params["epsilon"])
 
         # h1 implementation
         jsp_cst.add_h1_constraint(Q, jobs_data, M, params["eta"])
@@ -100,6 +74,9 @@ def run(args=None):
             else:
                 automatization_utils.print_failure("h3", params["eta"], params["alpha"],
                                                    params["beta"], nbr_of_constraint_success)
+                if options.v:
+                    print("RESPONSE: ")
+                    print(response)
                 sys.exit()
 
         # Check for h1
@@ -117,6 +94,9 @@ def run(args=None):
             else:
                 automatization_utils.print_failure("h1", params["eta"], params["alpha"],
                                                    params["beta"], nbr_of_constraint_success)
+                if options.v:
+                    print("RESPONSE: ")
+                    print(response)
                 sys.exit()
 
         # Check for h2
@@ -134,6 +114,9 @@ def run(args=None):
             else:
                 automatization_utils.print_failure("h2", params["eta"], params["alpha"],
                                                    params["beta"], nbr_of_constraint_success)
+                if options.v:
+                    print("RESPONSE: ")
+                    print(response)
                 sys.exit()
 
         if not options.a:
@@ -143,6 +126,12 @@ def run(args=None):
         nbr_of_constraint_success += 1
 
     print(operation_results)
+
+    print("BEFORE")
+    if options.v:
+        print("RESPONSE: ")
+        print(response)
+    print("AFTER")
 
     if options.i:
         dwave.inspector.show(response)
@@ -165,4 +154,4 @@ def run(args=None):
 
 
 if __name__ == "__main__":
-    run()
+    main()
