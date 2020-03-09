@@ -18,15 +18,15 @@ def main(args=None):
 
     # Jobs
     jobs_data = [  # task = (machine_id, processing_time).
-        [(0, 3), (1, 2), (2, 1)],  # Job0
-        [(2, 2), (0, 1), (1, 2)]   # Job1
+        [(0, 3), (1, 2)],  # Job0
+        [(1, 2), (0, 1)]   # Job1
     ]
 
     # Other constants
     nbr_jobs = len(jobs_data)
     nbr_machines = get_number_of_machines(jobs_data)
     N = nbr_jobs * len(jobs_data[0])  # Num Operations -- Rows
-    M = 7  # Upper Time Limit -- Cols
+    M = 5  # Upper Time Limit -- Cols
 
     operation_results = {}
     nbr_of_constraint_success = 0
@@ -161,6 +161,7 @@ def main(args=None):
 
     # Plot chart
     if options.p:
+        print("PLOT")
         plot_operations(jobs_data, operation_results)
 
     # Print Matrix

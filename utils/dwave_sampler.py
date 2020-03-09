@@ -6,8 +6,8 @@ import neal
 from dwave.system.samplers import DWaveSampler
 from dwave.system.composites import EmbeddingComposite
 
-numr = 500  # Number of samples / quantum computations
-chstr = 70  # Implementation parameter on the DWave QPU
+numr = 100  # Number of samples / quantum computations
+chstr = 6  # Implementation parameter on the DWave QPU
 annealing_time = 1000
 
 
@@ -23,4 +23,4 @@ def sample_on_dwave(Q, Quantum=False):
 
     # Simulated
     sampler = neal.SimulatedAnnealingSampler()
-    return sampler.sample(bqm, num_reads=numr, num_sweeps=2000)
+    return sampler.sample(bqm, num_reads=numr, num_sweeps=1000)
