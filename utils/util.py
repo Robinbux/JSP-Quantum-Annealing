@@ -55,3 +55,11 @@ def fill_Q_with_indexes(Q, i, t, k, t_prime, M, value):
     if index_a > index_b:
         index_a, index_b = index_b, index_a
     Q[index_a][index_b] += value
+
+def print_first_N_responses(response, N):
+    print(response.to_pandas_dataframe().head(N))
+    # for res in response:
+    #     print(res)
+    #     N -= 1
+    #     if N == 0:
+    #         return

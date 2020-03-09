@@ -14,5 +14,6 @@ def parse_arguments(args):
     parser.add_argument('-s', "--simulated", dest='s', help="Use the simulated annealer", action='store_true')
     parser.add_argument('-q', "--quantum", dest='q', help="Use the D-Wave quantum computer", action='store_true')
     parser.add_argument('-i', "--inspect", dest='i', help="Use the D-Wave inspector", action='store_true')
+    parser.add_argument('-p', "--plot", dest='p', help="Plot the graph", action='store_true')
 
     return parser.parse_known_args(args=args) if args is not None else parser.parse_known_args()

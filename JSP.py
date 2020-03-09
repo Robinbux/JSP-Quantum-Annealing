@@ -32,7 +32,7 @@ def main(args=None):
     nbr_of_constraint_success = 0
     stop = False
 
-    while nbr_of_constraint_success < 10 and not stop:
+    while nbr_of_constraint_success < 20 and not stop:
         # Initialize Matrix
         Q = np.zeros((M * N, M * N))
 
@@ -76,7 +76,11 @@ def main(args=None):
                                                    params["beta"], nbr_of_constraint_success)
                 if options.v:
                     print("RESPONSE: ")
-                    print(response)
+                    print_first_N_responses(response, 10)
+                if options.i:
+                    print("INSPECT BEFORE")
+                    dwave.inspector.show(response)
+                    print("INSPECT AFTER")
                 sys.exit()
 
         # Check for h1
@@ -96,7 +100,11 @@ def main(args=None):
                                                    params["beta"], nbr_of_constraint_success)
                 if options.v:
                     print("RESPONSE: ")
-                    print(response)
+                    print_first_N_responses(response, 10)
+                if options.i:
+                    print("INSPECT BEFORE")
+                    dwave.inspector.show(response)
+                    print("INSPECT AFTER")
                 sys.exit()
 
         # Check for h2
@@ -116,7 +124,11 @@ def main(args=None):
                                                    params["beta"], nbr_of_constraint_success)
                 if options.v:
                     print("RESPONSE: ")
-                    print(response)
+                    print_first_N_responses(response, 10)
+                if options.i:
+                    print("INSPECT BEFORE")
+                    dwave.inspector.show(response)
+                    print("INSPECT AFTER")
                 sys.exit()
 
         if not options.a:
@@ -130,15 +142,17 @@ def main(args=None):
     print("BEFORE")
     if options.v:
         print("RESPONSE: ")
-        print(response)
+        print_first_N_responses(response, 10)
     print("AFTER")
 
     if options.i:
+        print("INSPECT BEFORE")
         dwave.inspector.show(response)
+        print("INSPECT AFTER")
 
     if options.a:
         automatization_utils.print_success(params["eta"], params["alpha"], params["beta"], params["gamma"],
-                                           params["delta"])
+                                           params["delta"], params["epsilon"])
 
     # Replace params in yaml file:
     if options.r:
@@ -146,7 +160,8 @@ def main(args=None):
             yaml.dump(params, outfile, default_flow_style=False, sort_keys=False)
 
     # Plot chart
-    plot_operations(jobs_data, operation_results)
+    if options.p:
+        plot_operations(jobs_data, operation_results)
 
     # Print Matrix
     if options.m:

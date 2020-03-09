@@ -5,7 +5,7 @@ def print_failure(constraint_nbr, eta, alpha, beta, nbr_of_constraint_success):
     print("BETA: " + str(beta))
     print("Previous successful tries: " + str(nbr_of_constraint_success))
 
-def print_success(eta, alpha, beta, gamma, delta):
+def print_success(eta, alpha, beta, gamma, delta, epsilon):
     print("*************************")
     print("*************************")
     print("SUCCESS!!!")
@@ -14,5 +14,6 @@ def print_success(eta, alpha, beta, gamma, delta):
     print("BETA: " + str(beta))
     print("GAMMA: " + str(gamma))
     print("DELTA: " + str(delta))
+    print("EPSILON: " + str(delta))
     print("*************************")
     print("*************************")
