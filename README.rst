@@ -24,30 +24,48 @@ Usage
       -i, --inspect        Use the D-Wave inspector
       -p, --plot           Plot the graph
 
+In `parameters.yaml` you can tweak the lagrange parameters.
 
+===========
 Hamiltonian
+===========
+
+Constraints
 -----------
 We have 3 constraints as discribed in the paper.
 
 The first one ensures the order of operations in a job
 
-.. math::
+.. image:: equations/h1.png
+    :width: 300
 
-    h_1(\bar{x}) &= \sum_n \left( \sum\limits_{\substack{k_{n-1}<i<k_n \\ t+p_i>t'}} x_{i,t}x_{i+1,t'}\right),
+The second one ensures that no two operations are running on one machine at the same time
 
-\section{Space Minimization -- Machine level}
+.. image:: equations/h2.png
+    :width: 300
 
-For all machines $m$, we want the total length of the starting time in addition to the processing time to be minimal:
+The third one sets the constraint, that every operations runs only ones
 
-\begin{equation*}
-\sum_m\left(\sum_{i\in I_m}\sum\limits_{\substack{k\in I_m\\k\neq i\\t'>t}}x_{i,t}x_{k,t'}(t'-(t+p_i))\right)
-\end{equation*}
+.. image:: equations/h3.png
+    :width: 300
 
+Objective Function
+------------------
+To have the output as dense and optimal as possible, we punish unused time between operations.
 
-\section{Space Minimization -- Job level}
+Machine level:
 
-We want to have the same minimization on the job level:
+.. image:: equations/op_machine.png
+    :width: 300
 
-\begin{equation*}
-\sum_n\left(\sum_{k_{n-1}<i<k_n}x_{i,t}x_{i+1,t'}(t'-(t+p_i))\right)
-\end{equation*}
+Job level:
+
+.. image:: equations/op_job.png
+    :width: 300
+
+Now we need to insure that the solution starts as early as possible:
+
+.. image:: equations/op_time.png
+    :width: 300
+
+The sum of all these objective functions and constraints, in addition to the lagrange parameters make up the final hamiltonian.
