@@ -9,7 +9,6 @@ from utils.util import *
 
 def plot_operations(jobs_data, operation_results):
     nbr_machines = get_number_of_machines(jobs_data)
-
     df = []
 
     for m in range(nbr_machines):
@@ -36,10 +35,10 @@ def plot_operations(jobs_data, operation_results):
 
     fig.show()
 
+
 def plot_matrix(Q, jobs_data, M):
     print(Q)
-    nbr_jobs = len(jobs_data)
-    N = nbr_jobs * len(jobs_data[0])
+    N = get_number_of_operations(jobs_data)
 
     x = []
     y = []
@@ -52,4 +51,3 @@ def plot_matrix(Q, jobs_data, M):
 
     fig = ff.create_annotated_heatmap(z=np.flip(Q, 0).astype(int), x=x, y=y)
     fig.show(renderer="browser")
-

@@ -1,15 +1,12 @@
 import numpy as np
-import yaml
 import sys
 
-from optimization import jsp_optimizations as jsp_op
-from constraints import jsp_constraints as jsp_cst
+from constraints.JSPConstraint import JSPConstraint
+from optimization.JSPOptimization import JSPOptimization
 from utils import dwave_sampler, constaint_utils, automatization_utils
-from utils.scheduling_plot import plot_operations, plot_matrix
 from utils.util import *
-from utils.arg_parser import parse_arguments
+from utils.arg_parser import parse_arguments, execute_flags
 from utils.param_util import load_params
-import dwave.inspector
 
 
 def main(args=None):
@@ -18,43 +15,35 @@ def main(args=None):
 
     # Jobs
     jobs_data = [  # task = (machine_id, processing_time).
-        [(0, 3), (1, 2)],  # Job0
-        [(1, 2), (0, 1)]   # Job1
+        [(0, 3), (1, 2), (2, 2)],  # Job0
+        [(0, 2), (2, 1), (1, 4)],  # Job1
+        [(1, 4), (2, 3)]  # Job2
     ]
 
     # Other constants
-    nbr_jobs = len(jobs_data)
-    nbr_machines = get_number_of_machines(jobs_data)
-    N = nbr_jobs * len(jobs_data[0])  # Num Operations -- Rows
-    M = 5  # Upper Time Limit -- Cols
+    nbr_operations = get_number_of_operations(jobs_data)  # Num Operations -- Rows
+    T = 9  # Upper Time Limit -- Cols
 
     operation_results = {}
     nbr_of_constraint_success = 0
     stop = False
 
-    while nbr_of_constraint_success < 20 and not stop:
+    while nbr_of_constraint_success < 50 and not stop:
+
+        jsp_constraint = JSPConstraint(jobs_data, T, params["alpha"], params["beta"], params["eta"])
+        jso_optimization = JSPOptimization(jobs_data, T, params["gamma"], params["delta"], params["epsilon"])
+
         # Initialize Matrix
-        Q = np.zeros((M * N, M * N))
+        QUBO = np.zeros((T * nbr_operations, T * nbr_operations))
 
-        # Space Minimization -- Machine level
-        jsp_op.minimize_spaces_on_machine_level(Q, jobs_data, M, params["gamma"])
-        # Space Minimization -- Job level
-        jsp_op.minimize_spaces_on_job_level(Q, jobs_data, M, params["delta"])
-        # Time Optimization
-        jsp_op.optimize_time(Q, jobs_data, M, params["epsilon"])
-
-        # h1 implementation
-        jsp_cst.add_h1_constraint(Q, jobs_data, M, params["eta"])
-        # h2 implementation
-        jsp_cst.add_h2_constraint(Q, jobs_data, M, params["alpha"])
-        # h3 implementation
-        jsp_cst.add_h3_constraint(Q, jobs_data, M, params["beta"])
+        jso_optimization.add_optimizations(QUBO)
+        jsp_constraint.add_constraints(QUBO)
 
         # Converting the QUBO to BQM and sample on D-Wave machine
-        response = dwave_sampler.sample_on_dwave(Q, options.q)
+        response = dwave_sampler.sample_on_dwave(QUBO, options.q)
 
         # Ger operation results
-        operation_results = convert_response_to_operation_results(response, M)
+        operation_results = convert_response_to_operation_results(response, T)
         if options.v:
             print(operation_results)
 
@@ -74,13 +63,7 @@ def main(args=None):
             else:
                 automatization_utils.print_failure("h3", params["eta"], params["alpha"],
                                                    params["beta"], nbr_of_constraint_success)
-                if options.v:
-                    print("RESPONSE: ")
-                    print_first_N_responses(response, 10)
-                if options.i:
-                    print("INSPECT BEFORE")
-                    dwave.inspector.show(response)
-                    print("INSPECT AFTER")
+                execute_flags(options, response, jobs_data, operation_results, params, QUBO, T)
                 sys.exit()
 
         # Check for h1
@@ -98,17 +81,11 @@ def main(args=None):
             else:
                 automatization_utils.print_failure("h1", params["eta"], params["alpha"],
                                                    params["beta"], nbr_of_constraint_success)
-                if options.v:
-                    print("RESPONSE: ")
-                    print_first_N_responses(response, 10)
-                if options.i:
-                    print("INSPECT BEFORE")
-                    dwave.inspector.show(response)
-                    print("INSPECT AFTER")
+                execute_flags(options, response, jobs_data, operation_results, params, QUBO, T)
                 sys.exit()
 
         # Check for h2
-        if not constaint_utils.h2_constraint_is_fulfilled(operation_results, jobs_data, M):
+        if not constaint_utils.h2_constraint_is_fulfilled(operation_results, jobs_data, T):
             if options.a:
                 if options.v:
                     automatization_utils.print_failure("h2", params["eta"], params["alpha"],
@@ -122,15 +99,7 @@ def main(args=None):
             else:
                 automatization_utils.print_failure("h2", params["eta"], params["alpha"],
                                                    params["beta"], nbr_of_constraint_success)
-                if options.v:
-                    print("RESPONSE: ")
-                    print_first_N_responses(response, 10)
-                if options.i:
-                    print("INSPECT BEFORE")
-                    dwave.inspector.show(response)
-                    print("INSPECT AFTER")
-                sys.exit()
-
+                execute_flags(options, response, jobs_data, operation_results, params, QUBO, T)
         if not options.a:
             break
 
@@ -139,34 +108,11 @@ def main(args=None):
 
     print(operation_results)
 
-    print("BEFORE")
-    if options.v:
-        print("RESPONSE: ")
-        print_first_N_responses(response, 10)
-    print("AFTER")
-
-    if options.i:
-        print("INSPECT BEFORE")
-        dwave.inspector.show(response)
-        print("INSPECT AFTER")
+    execute_flags(options, response, jobs_data, operation_results, params, QUBO, T, success=True)
 
     if options.a:
         automatization_utils.print_success(params["eta"], params["alpha"], params["beta"], params["gamma"],
                                            params["delta"], params["epsilon"])
-
-    # Replace params in yaml file:
-    if options.r:
-        with open('parameters.yaml', 'w') as outfile:
-            yaml.dump(params, outfile, default_flow_style=False, sort_keys=False)
-
-    # Plot chart
-    if options.p:
-        print("PLOT")
-        plot_operations(jobs_data, operation_results)
-
-    # Print Matrix
-    if options.m:
-        plot_matrix(Q, jobs_data, M)
 
 
 if __name__ == "__main__":
