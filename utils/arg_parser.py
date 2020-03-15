@@ -8,7 +8,7 @@ from utils.util import *
 
 def parse_arguments(args):
     parser = argparse.ArgumentParser()
-    parser.add_argument('-a', "--automatically", dest='a',
+    parser.add_argument('-a', "--automatical", dest='a',
                         help="Automatically increase 'Eta', 'Alpha' and 'Beta', until no constraint is violated anymore.",
                         action='store_true')
     parser.add_argument('-r', "--replace", dest='r',
