@@ -24,7 +24,7 @@ Usage
       -i, --inspect        Use the D-Wave inspector
       -p, --plot           Plot the graph
 
-In `parameters.yaml` you can tweak the lagrange parameters.
+In :code:`parameters.yaml` you can tweak the lagrange parameters.
 
 ===========
 Hamiltonian

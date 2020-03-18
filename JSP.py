@@ -13,22 +13,28 @@ def main(args=None):
     options, unknown = parse_arguments(args)
     params = load_params()
 
+    # # Jobs
+    # jobs_data = [  # task = (machine_id, processing_time).
+    #     [(0, 3), (1, 2), (2, 2)],  # Job0
+    #     [(0, 2), (2, 1), (1, 4)],  # Job1
+    #     [(1, 4), (2, 3)]  # Job2
+    # ]
+
     # Jobs
     jobs_data = [  # task = (machine_id, processing_time).
-        [(0, 3), (1, 2), (2, 2)],  # Job0
-        [(0, 2), (2, 1), (1, 4)],  # Job1
-        [(1, 4), (2, 3)]  # Job2
+        [(0, 2), (1, 2)],  # Job0
+        [(1, 2), (0, 2)]
     ]
 
     # Other constants
     nbr_operations = get_number_of_operations(jobs_data)  # Num Operations -- Rows
-    T = 9  # Upper Time Limit -- Cols
+    T = 4  # Upper Time Limit -- Cols
 
     operation_results = {}
     nbr_of_constraint_success = 0
     stop = False
 
-    while nbr_of_constraint_success < 50 and not stop:
+    while nbr_of_constraint_success < 30 and not stop:
 
         jsp_constraint = JSPConstraint(jobs_data, T, params["alpha"], params["beta"], params["eta"])
         jso_optimization = JSPOptimization(jobs_data, T, params["gamma"], params["delta"], params["epsilon"])

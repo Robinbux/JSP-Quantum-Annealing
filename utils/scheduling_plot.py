@@ -8,15 +8,14 @@ from utils.util import *
 
 
 def plot_operations(jobs_data, operation_results):
-    nbr_machines = get_number_of_machines(jobs_data)
     df = []
 
-    for m in range(nbr_machines):
-        for o in get_operation_indexes_for_machine_m(m, jobs_data):
+    for j in range(len(jobs_data)):
+        for o in get_operation_indexes_for_job_j(j, jobs_data):
             operation = get_operation_x(o, jobs_data)
             df.append(
-                dict(Task=f"Machine-{m}  ", Start=operation_results[o], Finish=operation_results[o] + operation[1],
-                     Resource=f"Job-{get_job_from_operation(o, jobs_data)}"))
+                dict(Task=f"Machine-{operation[0]}  ", Start=operation_results[o], Finish=operation_results[o] + operation[1],
+                     Resource=f"Job-{j}"))
 
     colors = {'Job-0': 'rgb(76,59,77)',
               'Job-1': 'rgb(165,56,96)',

@@ -31,11 +31,8 @@ class JSPConstraint:
     # h2 implementation
     #
     def __add_h2_constraint(self, QUBO):
-        def Am_condition_fulfilled(i, t, k, t_prime, M, jobs):
-            return i != k and 0 <= t and t_prime <= M and 0 < t_prime - t < get_operation_x(i, jobs)[1]
-
-        def Bm_condition_fulfilled(i, t, k, t_prime, jobs):
-            return i < k and t_prime == t and get_operation_x(i, jobs)[1] > 0 and get_operation_x(k, jobs)[1] > 0
+        def Rm_condition_fulfilled(i, t, k, t_prime, M, jobs):
+            return i != k and 0 <= t and t_prime <= M and 0 <= t_prime - t < get_operation_x(i, jobs)[1]
 
         nbr_machines = get_number_of_machines(self.jobs_data)
         for m in range(nbr_machines):
@@ -44,8 +41,7 @@ class JSPConstraint:
                 for k in operation_indexes_m:
                     for t in range(self.T):
                         for t_prime in range(self.T):
-                            if Am_condition_fulfilled(i, t, k, t_prime, self.T, self.jobs_data) \
-                                    or Bm_condition_fulfilled(i, t, k, t_prime, self.jobs_data):
+                            if Rm_condition_fulfilled(i, t, k, t_prime, self.T, self.jobs_data):
                                 fill_QUBO_with_indexes(QUBO, i, t, k, t_prime, self.T, self.alpha)
 
     #

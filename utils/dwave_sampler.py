@@ -5,9 +5,10 @@ import dimod
 import neal
 from dwave.system.samplers import DWaveSampler
 from dwave.system.composites import EmbeddingComposite
+from dwave.system import LeapHybridSampler
 
 numr = 1000  # Number of samples / quantum computations
-chstr = 200  # Implementation parameter on the DWave QPU
+chstr = 350  # Implementation parameter on the DWave QPU
 
 anneal_time = 1000.0
 pause_duration = 500.0  # Must be greater than 0
@@ -24,12 +25,11 @@ def sample_on_dwave(Q, Quantum=False):
         # Real
         sampler = EmbeddingComposite(DWaveSampler(solver={'qpu': True}))
         # sampler = DWaveSampler()
-        return sampler.sample(bqm=bqm,
-                              chain_strength=chstr,
-                              num_reads=numr
+        print(bqm)
+        print(LeapHybridSampler().sample(bqm
                               # annealing_time=anneal_time,
                               # anneal_schedule=schedule
-                              )
+                              ))
 
     # Simulated
     sampler = neal.SimulatedAnnealingSampler()
