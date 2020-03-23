@@ -24,12 +24,7 @@ def sample_on_dwave(Q, Quantum=False):
     if Quantum:
         # Real
         sampler = EmbeddingComposite(DWaveSampler(solver={'qpu': True}))
-        # sampler = DWaveSampler()
-        print(bqm)
-        print(LeapHybridSampler().sample(bqm
-                              # annealing_time=anneal_time,
-                              # anneal_schedule=schedule
-                              ))
+        return sampler.sample(bqm, chain_strength=chstr)
 
     # Simulated
     sampler = neal.SimulatedAnnealingSampler()

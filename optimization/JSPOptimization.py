@@ -51,4 +51,4 @@ class JSPOptimization:
         N = get_number_of_operations(self.jobs_data)
         for i in range(N):
             for t in range(self.T):
-                fill_QUBO_with_indexes(QUBO, i, t, i, t, self.T, self.epsilon * t)
+                fill_QUBO_with_indexes(QUBO, i, t, i, t, self.T, self.epsilon * (t + get_operation_x(i, self.jobs_data)[1]))

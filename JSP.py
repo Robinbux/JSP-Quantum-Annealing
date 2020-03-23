@@ -14,21 +14,21 @@ def main(args=None):
     params = load_params()
 
     # # Jobs
-    # jobs_data = [  # task = (machine_id, processing_time).
-    #     [(0, 3), (1, 2), (2, 2)],  # Job0
-    #     [(0, 2), (2, 1), (1, 4)],  # Job1
-    #     [(1, 4), (2, 3)]  # Job2
-    # ]
-
-    # Jobs
     jobs_data = [  # task = (machine_id, processing_time).
-        [(0, 2), (1, 2)],  # Job0
-        [(1, 2), (0, 2)]
-    ]
+    [(0, 3), (1, 2), (2, 2)],  # Job0
+    [(0, 2), (2, 1), (1, 4)],  # Job1
+    [(1, 4), (2, 3)]   # Job2
+]
+
+    # # Jobs
+    # jobs_data = [  # task = (machine_id, processing_time).
+    #     [(0, 2), (1, 2)],  # Job0
+    #     [(1, 2), (0, 2)]
+    # ]
 
     # Other constants
     nbr_operations = get_number_of_operations(jobs_data)  # Num Operations -- Rows
-    T = 4  # Upper Time Limit -- Cols
+    T = 9  # Upper Time Limit -- Cols
 
     operation_results = {}
     nbr_of_constraint_success = 0

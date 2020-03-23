@@ -14,6 +14,6 @@ def print_success(eta, alpha, beta, gamma, delta, epsilon):
     print("BETA: " + str(beta))
     print("GAMMA: " + str(gamma))
     print("DELTA: " + str(delta))
-    print("EPSILON: " + str(delta))
+    print("EPSILON: " + str(epsilon))
     print("*************************")
     print("*************************")
